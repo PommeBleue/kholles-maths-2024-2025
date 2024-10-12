@@ -1,3 +1,8 @@
-s*/!public*
-**.DS_Store
-.vscode
+**
+!s*/public*
+!img/**
+!fonts/**
+!scripts/**
+!Makefile
+!mystd.sty
+!README.md
