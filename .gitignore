@@ -1,6 +1,3 @@
-!img/**
-!fonts/**
-!scripts/**
-!Makefile
-!mystd.sty
-!**/public*.*
+s*/!public*.*
+.DS_Store
+.vs_code
