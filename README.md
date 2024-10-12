@@ -4,10 +4,10 @@ J'ai assuré, durant l'année scolaire 2024/2024, des khôlles de mathématiques
 # Utilisation 
 
 Si vous voulez cloner le présent repo pour l'utiliser à votre tour, voici comment je compile mes fichiers `.tex` dossier par dossier : 
-```bash
+```cmd
 $ make run nomDuDossier [nomDuFichier]
 ```
 Ne pas spécifier de nom de fichier compilera le fichier `main.tex` du dossier indiqué, si ce fichier existe. Par exemple, pour compiler `public.tex` du dossier `s3`, je tape :
-```bash 
+```cmd 
 $ make run s3 public
 ```
