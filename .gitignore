@@ -1,8 +1,5 @@
-**
-!s*/public*
-!img**
-!fonts/**
-!scripts/**
-!Makefile
-!mystd.sty
-!README.md
+.vscode
+**.DS_Store
+s*/main.*
+s1/*
+texput.log

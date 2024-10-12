@@ -1,0 +1,118 @@
+\documentclass[9pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    \maketitle
+    \section*{Élève 1*}
+    \begin{qc}
+        Qu'est-ce qu'un anneau principal ? Pour $k$ un corps, $k[X]$ est-il principal ?
+    \end{qc}
+
+    \begin{exo}
+        Soit $P\in\C[X]$. On suppose que $P(\Q)=\Q$.
+        \begin{enumerate}
+            \item Montrer que $P\in\Q[X]$.
+            \item En déduire que $P$ est de degré $1$.\\
+            \textit{Indication : raisonner par l'absurde et partir de $P(r)=1/m$ avec $r\in \Q$ et $m$ un nombre premier.}
+        \end{enumerate}
+    \end{exo}
+
+    \begin{exo}
+        Soient $k$ un corps, $E$ un $k$-espace vectoriel de dimension finie et $F$ un $k$-espace vectoriel.
+        \begin{enumerate}
+            \item Soient $f,g\in\mathcal L(E,F)$. Montrer les inégalités 
+            \[
+                |\rg f - \rg g|\leq \rg(f+g)\leq \rg f + \rg g
+            \]
+            \item Soient $f$ et $g$ des endomorphismes de $E$ vérifiant $fg=0$ et $f+g\in\gl(E)$. Montrer que $\rg f+\rg g = \dim E$.
+        \end{enumerate}
+    \end{exo}
+
+    \newpage 
+    \section*{Élève 1}
+    \begin{ccp}
+        Soit $f$ un endomorphisme d'un espace vectoriel $E$ de dimension finie $n$.
+        \begin{enumerate}
+            \item Démontrer que $E=\im f \oplus \ker f\implies \im f = \im f^2$.
+            \item 
+            \begin{enumerate}
+                \item Démontrer que $\im f = \im f^2\iff \ker f = \ker f^2$.
+                \item Démontrer que $\im f = \im f^2 \implies E = \im f \oplus \ker f$.
+            \end{enumerate}
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Soient $A\in\gl_n(\K)$, $B\in\gl_m(\K)$, $C\in\mathcal M_{n,m}(\K)$ et $T$ la matrice triangulaire par blocs donnée par 
+        \[
+            T=\left(\begin{array}{c c} A & C\\ 0 & B \end{array}\right)
+        \]
+        Justifier que $T$ est inversible et donner son inverse.
+    \end{exo}
+
+    \begin{exo}
+        Soit $P=a_nX^n+a_{n-1}X^{n-1}+\dots+a_0\in\Z[X]$. Démontrer que si le rationnel $r=p/q$ (avec $p\wedge q=1$) est racine de $P$, alors $p$ divise $a_0$ et $q$ divise $a_n$.
+        En déduire les racines du polynôme $3X^3-8X^2+8X-5$.
+    \end{exo}
+
+    \section*{Élève 2}
+    \begin{ccp}
+        \hfill
+        \begin{enumerate}
+            \item Soient $n\in\N^*$, $P\in\R_n[X]$ et $a\in\R$.
+            \begin{enumerate}
+                \item Donner sans démonstration, en utilisant la formule de Taylor, la décomposition de $P$ dans la base $\left(1,(X-a),\dots,(X-a)^n\right)$.
+                \item Soit $r\in\N^*$. En déduire que $a$ est racine de $P$ d'ordre de multiplicité $r$ si et seulement si $P^{(r)}(a)\neq 0$ et $\forall k\in\lbrace 1,\dots,r-1\rbrace$, $P^{(k)}(a)=0$.
+            \end{enumerate}
+            \item Déterminer deux réels $a$ et $b$ pour que $1$ soit racine double du polynôme $P=X^5+aX^2+bX$ et factoriser alors ce polynôme dans $\R[X]$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        On considère $E=\R^{\R}$, $\R$-espace vectoriel. 
+        Pour $n\in\N^*$, on désigne par $f_n$ l'élément de $E$ défini par $f_n(x)=\sin(x^n)$. 
+        Montrer que la famille $(f_n)_{n\geq 1}$ est libre dans $E$.
+    \end{exo}
+
+    \newpage
+    \section*{Élève 3}
+    \begin{ccp}
+        Soient $a_1,a_2,a_3$ trois scalaires distincts donnés dans $\K=\R,\C$.
+        \begin{enumerate}
+            \item Montrer que $\Phi:\K_2[X]\to \K^3,\ P\mapsto \left(P(a_1),P(a_2),P(a_3)\right)$ est un isomorphisme d'espaces vectoriels.
+            \item On note $(e_1,e_2,e_3)$ la base canonique de $\K^3$ et on pose $\forall k\in\lbrace 1,2,3\rbrace$, $L_k=\Phi^{-1}(e_k)$.
+            \begin{enumerate}
+                \item Justifier que $(L_1,L_2,L_3)$ est une base de $\K_2[X]$.
+                \item Exprimer les polynômes $L_1,L_2,L_3$ en fonciton de $a_1$, $a_2$ et $a_3$.
+                \item Soit $P\in\K_2[X]$. Déterminer les coordonnées de $P$ dans la base $(L_1,L_2,L_3)$.
+                \item \textbf{Application :} on se place dans $\R^2$ muni d'un repère orthonormé et on considère les trois points $A(0,1)$, $B(1,3)$ et $C(2,1)$. 
+                Déterminer une fonction polynomiale de degré $2$ dont la courbe passe par les points $A$, $B$ et $C$.
+            \end{enumerate}
+        \end{enumerate}
+    \end{ccp}
+
+
+    \begin{exo}
+        Soit $B$ la matrice par blocs 
+        \[
+            \begin{pmatrix} A_1 & & \\ & \ddots & \\ & & A_n \end{pmatrix}
+        \]
+        Exprimer le rang de $B$ en fonction du rang des $A_i$.
+    \end{exo}
+
+    \begin{exo}
+        On désigne par $E$ l'ensemble des fonctions de $\R$ dans $\R$ continues.
+        Soit $F$ l'ensemble des éléments constants de $E$ et $G$ l'ensemble des éléments dont l'intégrale sur $[0,1]$ nulle.
+        \begin{enumerate}
+            \item Vérifier que $E$, $F$ et $G$ sont des $\R$-espace vectoriels.
+            \item Montrer que $E=F\oplus G$.
+            \item Pour $f\in E$, déterminer la projection de $f$ sur $F$ parallèlement à $G$.
+        \end{enumerate}
+    \end{exo}
+
+
+    
+\end{document}
