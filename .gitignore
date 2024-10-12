@@ -1,0 +1,6 @@
+!img/**
+!fonts/**
+!scripts/**
+!Makefile
+!mystd.sty
+!**/public*.*

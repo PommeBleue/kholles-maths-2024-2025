@@ -1,0 +1,1 @@
+{"rule":"FR_SPELLING_RULE","sentence":"^\\Qshowonlyrefs\\E$"}
