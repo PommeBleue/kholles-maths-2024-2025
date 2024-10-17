@@ -1,0 +1,86 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    %\maketitle
+    \subsection*{Séries commutativement convergentes}
+    Il s'agit des séries $\sum u_n$ telles que pour toute bijection $\varphi:\N\to\N$, la série $\sum u_{\varphi(n)}$ converge. 
+    En particulier, une série commutativement convergente est convergente (en prenant $\varphi=\id_{\N}$).
+    \begin{thm}
+        Toute série $\sum u_n$ de réels absolument convergente est commutativement convergente. 
+        De plus, pour toute bijection $\varphi:\N\to\N$, on a 
+        \[
+            \sum_{n=0}^\infty u_n=\sum_{n=0}^\infty u_{\varphi(n)}
+        \]
+    \end{thm}
+
+    \begin{proof}
+        Étant donné une bijection $\varphi:\N\to\N$, on remarque que 
+        \[
+            \forall N\geq 0,\ \sum_{n=0}^N|u_{\varphi(n)}|\leq \sum_{n=0}^\infty|u_n|<\infty\tag*{(1)}
+        \]
+        donc $\sum u_{\varphi(n)}$ converge absolument, donc converge. 
+        
+        Pour $\varepsilon > 0$, il existe $n_0\geq 0$ tel que $\sum_{n> n_0}|u_n|<\varepsilon/3$. 
+        Il existe, en vertu de la surjectivité de $\varphi$, un entier $n_1$ tel que $\lbrace 0,\dots,n_0\rbrace\subseteq\lbrace\varphi(0),\dots,\varphi(n_1)\rbrace$ (on peut, par exemple, prendre pour $n_1$ le maximum des antécédants des entiers $0,\dots,n_0$ par $\varphi$).
+        Donc 
+        \begin{align*}
+            \left|\sum_{n=0}^\infty u_n-\sum_{n=0}^\infty u_{\varphi(n)}\right| &\leq \left|\sum_{n=0}^\infty u_n-\sum_{n=0}^{n_0} u_n\right|+\left|\sum_{n=0}^{n_0} u_n-\sum_{n=0}^{n_1} u_{\varphi(n)}\right|+\left|\sum_{n=0}^{n_1} u_{\varphi(n)}-\sum_{n=0}^\infty u_{\varphi(n)}\right|\\
+                                                                                &\leq 3\sum_{n>n_0}|u_n|<\varepsilon
+        \end{align*}
+    \end{proof}
+
+    \begin{remarks}
+        Dans la première question du deuxième exercice, on n'avait pas besoin de montrer le théorème pour conclure à la convergence de la série étudiée, pusqu'il suffisait d'utiliser la majoration (1).
+    \end{remarks}
+
+    La réciproque du théorème précédent est vraie. 
+    C'est-à-dire que si une série réelle est commutativement convergente, alors elle est absolument convergente. 
+    Cela vient du fait que si la série des valeurs absolues diverge, alors il est possible de construire une bijection qui contredit l'hypothèse de convergence commutative.
+
+    Il est même possible de "faire pire", au sens du théorème suivant : 
+    \begin{thm}[de Riemann]
+        Soit une série $\sum u_n$ réelle qui converge, mais pas absolument.
+        Alors 
+        \[
+            \forall x\in\R\cup\lbrace\pm\infty\rbrace,\ \exists\varphi\in\mathfrak S(\N),\ \sum_{n=0}^{+\infty}u_{\varphi(n)}=x
+        \]
+    \end{thm}
+
+    \subsection*{Autre}
+    \begin{exo}
+        Soit $(u_n)$ une suite positive et décroissante. Prouver que si la série $\sum u_n$ converge, alors $nu_n\to 0$ à mesure que $n\to\infty$.
+    \end{exo}
+
+    \begin{proof}
+        On procède par l'absurde. 
+        En niant le résultat, on montre qu'il existe $\varepsilon>0$ tel que pour tout $N\geq 0$, il existe $q_N\geq N$ tel que $u_{q_N}\geq \varepsilon/q_N$.
+        Pour des entiers $N$ et $q_N$ qui vérifient ce qui précède, on note $p_N=\lfloor q_N/2\rfloor\geq\lfloor N/2\rfloor$. 
+        La décroissance de la suite $(u_n)$ donne
+        \[
+            \sum_{k=p_N}^{2p_N}u_k\geq  \sum_{k=p_N}^{2p_N}u_{2p_N}=(p_N+1)u_{2p_N}
+        \]
+        Mais $2p_N\leq q_N$ donc $u_{2p_N}\geq u_{q_N}\geq \varepsilon/q_N$, par décroissance de $u$ et choix de $q_N$.
+
+        Mais aussi, $p_N+1=2p_N-p_N+1=2\lfloor q_N/2\rfloor -\lfloor q_N/2\rfloor+1> q_N-2-q_N/2+1$ donc $p_N+1\geq q_N/2$. 
+        
+        Finalement,
+        \[
+            \sum_{k=p_N}^{2p_N}u_k\geq \varepsilon/2
+        \]
+
+        Mais la suite $(p_N)_{N\geq 0}$ tend vers $+\infty$, il est ainsi possible de construire une extractrice $\varphi:\N\to\N$ telle que 
+
+        \[
+            \forall p\geq 0,\ \sum_{k=\varphi(p)}^{2\varphi(p)}u_k\geq \varepsilon/2\tag*{(1)}
+        \]
+
+        Mais $\sum_{k=\varphi(p)}^{2\varphi(p)}u_k=S_{2\varphi(p)}-S_{\varphi(p)-1}\to 0$ lorsque $p\to\infty$ ($S_n$ désigne la somme partielle d'ordre $n$).
+
+        Un passage à la limite dans (1) montre alors $0\geq \varepsilon$, ce qui n'est pas.
+
+    \end{proof}
+\end{document}
