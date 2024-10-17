@@ -1,5 +1,5 @@
 # But du repo
-J'ai assuré, durant l'année scolaire 2024/2024, des khôlles de mathématiques en classe de MPI/MPI* au Lycée Paul Valéry. Ce repo est là pour garder une trace des planches d'exercices ainsi que des éventuelles corrections que j'ai la foi de taper pour certains exercices. 
+J'ai assuré, durant l'année scolaire 2024/2025, des khôlles de mathématiques en classe de MPI/MPI* au Lycée Paul Valéry. Ce repo est là pour garder une trace des planches d'exercices ainsi que des éventuelles corrections que j'ai la foi de taper pour certains exercices. 
 
 # Utilisation 
 
