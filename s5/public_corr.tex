@@ -1,0 +1,273 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    %\maketitle
+    \subsection*{Élève 1*}
+    \begin{exo}
+        Soit $C$ un compact convexe d'un evn $E$. 
+        Soit $f:C\to C$ une fonction $1$-lipschitzienne. 
+        Montrer que $f$ admet un point fixe. 
+
+        \textit{Indication : on pourra utiliser $f_n:x\in C\mapsto \frac1na+\left(1-\frac1n\right)f(x)$ où $a\in C$ pour $n\geq 1$.}
+    \end{exo}
+
+    \begin{proof}
+        Remarquons que pour tout $n\in\N$, $f_n$ est définie sur $C$, à valeurs dans $C$ en vertu de la convexité de cette partie et est $1-\frac1n$ lipschitzienne. 
+        
+        Comme $1-\frac1n<1$ et $C$ est compact, on peut appliquer le théorème du point fixe de Banach-Picard pour montrer que $f_n$ admet un point fixe $x_n\in C$. 
+        Quitte à extraire une suite convergente de $(x_n)$ (à valeurs dans le compact $C$), on peut supposer que $(x_n)$ converge vers $x\in C$. 
+        De plus, la continuité de $f$ nous donne $x_n=f_n(x_n)\to f(x)$ à mesure que $n\to\infty$, donc, par unicité de la limite, $f(x)=x$.
+    \end{proof}
+
+    \begin{remarks}
+        Le théorème du point fixe de Banach-Picard peut s'énoncer comme suit : si $f:E\to E$ est une application $k$-lipschitzienne avec $k\in[0,1[$ où $E$ est un espace de Banach, alors $f$ admet un unique point fixe sur $E$.
+        Si vous savez ce qu'est un espace de Banach, il reste à comprendre pourquoi j'invoque ce théorème pour expliquer que mes fonctions définies sur un compact admettent un point fixe.
+        Sinon, sachez que si on remplace $E$ par une partie compacte d'un espace vectoriel normé, alors le théorème reste vrai. Dans tous les cas, la démonstration vous est laissée en exercice.
+    \end{remarks}
+    
+    \begin{exo}
+        Soit $E$ un evn de dimension infinie et $K$ un compact de $E$. 
+        Montrer que $E\backslash K$ est connexe par arcs.
+
+        \textit{On admettra pour cela qu'en dimension infinie, $S(0,1)$ n'est pas compacte.}
+    \end{exo}
+
+    \begin{proof}
+        D'abord, voyons pourquoi cela est faux en dimension finie. 
+        Dans $\R^n$ muni d'une certaine norme $\norm{\cdot}$, on pose $K=\lbrace x\in\R^n,\ \norm{x}\in[1,2]\rbrace$, qui est compact. 
+        Un chemin continu $\gamma:[0,1]\to \R^n$ entre deux points $x$ et $y$ de $\R^n$ tels que $\norm{x}<1$ et $\norm{y}>2$ passe nécessairement par $K$, puisque $\norm{\gamma}$ est encore continue par continuité de la norme. 
+        Ainsi, $\R^n\backslash K$ n'est pas connexe par arcs. 
+
+        Ce qui coince en dimension infinie, c'est que, pour n'importe quelle norme, $K$ n'est pas compact, car sinon, $S(0,2)$, qui est homéomorphe à $S(0,1)$, serait compacte en tant que partie fermée incluse dans $K$, un compact,
+        ce qui contredit la non-compacité de $S(0,1)$. 
+
+        Intuitivement, on comprend que, en dimension infinie, un compact aura du mal à remplir l'espace dans toutes les directions.
+        
+        Soit alors un compact $K$ de $E$ evn de dimension infinie. Montrons que $E\backslash K$ est connexe par arcs. 
+
+        On va montrer quelque chose de plus fort : pour tout point $x\in E\backslash K$, il existe une demi-droite partant de $x$ qui ne rencontre pas $K$. 
+        Supposons le contraire. Cela veut dire que 
+        \[
+            \forall v\in E, \exists\lambda_v\in\R_+^*,\exists y_v\in K,\ x+\lambda_vv=y_v
+        \]
+        Pour $v\in E$, on a alors $y_v-x=\lambda_vv$, soit, en passant à la norme, $\lambda_v\norm{v}=\norm{y_v-x}$. 
+        Si $v$ est pris unitaire, alors on a $v=\frac{y_v-x}{\norm{y_v-x}}$.
+        L'application $\varphi:y\in K\mapsto \frac{y-x}{\norm{y-x}}$ est bien définie, continue sur $K$ et $\varphi(K)=S(0,1)$ qui est alors compact comme image par une fonction continue d'un compact, ce qui n'est pas vrai.
+
+        Finalement, si $B(0,R)$ est une boule de rayon assez grand pour contenir $K$, alors tout point $x$ de $E\backslash K$ admet un chemin continu qui part de $x$ et finissant en un point de norme plus grande que $R$, mais $E\backslash B(0,R)$ est connexe par arcs et inclus dans $E\backslash K$. 
+        En concaténant les bons chemins, on montre que $E\backslash K$ est bien connexe par arcs.
+    \end{proof}
+
+    \begin{remarks}
+        Pour montrer que $E\backslash B(0,R)$ est un connexe par arcs, on peut poser $(r,x)\in[R,+\infty[\times(E\backslash\lbrace 0\rbrace)\mapsto r\frac x{\norm x}$.
+    \end{remarks}
+
+    \subsection*{Élève 2*}
+    \begin{exo}
+        Soit $(f_n)_{n\in\N}$ une suite de fonctions croissantes d'un intervalle ouvert $I$ de $\R$ dans $\R$ qui est simplement bornée, i.e telle que pour tout $x\in I$, la suite $(f_n(x))$ est bornée.
+        Démontrer qu'il existe une sous-suite $(f_{\varphi(n)})$ et une fonction croissante $f:I\to\R$, telle que cette sous-suite converge simplement vers $f$.
+    \end{exo}
+
+    \begin{proof}
+        On va d'abord extraire une suite qui converge simplement de $(g_n)$ où $g_n={f_n}_{|\Q\cap I}$ pour tout $n\in\N$.
+        Pour ça, il suffit de faire une extraction diagonale, sachant que la suite de fonctions $(f_n)$ est simplement bornée.
+
+        On suppose alors qu'on a une extractrice $\varphi:\N\to\N$ et une application $g:\Q\cap I\to\R$ telle que $(g_{\varphi(n)})$ converge simplement vers $g$ sur $\Q\cap I$.
+        Les fonctions $g_n$ étant croissantes par restriction, on montre facilement que $g$ l'est aussi. Cela nous amène à poser 
+        \[
+            f(x)=\sup_{\begin{smallmatrix}y\in \Q\cap I\\ y\leq x\end{smallmatrix}}g(x)
+        \]
+        La fonction $f$ ainsi définie est encore croissante.
+
+        Soit $x$ un point où $f$ est continue.
+        Soit $\varepsilon > 0$. Comme $f$ est continue en $x$, si $a,b\in\Q\cap I$ avec $a\leq x\leq b$ sont assez proches de $x$, alors $f(b)-\varepsilon\leq f(x)\leq f(a)+\varepsilon$. 
+        Puis $f_{\varphi(n)}(l)$ tend vers $f(l)$ pour $l=a,b$ par construction de $\varphi$, donc, à partir d'un certain rang 
+        \[
+            f_{\varphi(n)}(b)-2\varepsilon\leq f(x)\leq f_{\varphi(n)}(a)+2\varepsilon
+        \]
+        puis par croissance des $f_n$, alors à partir d'un certain rang 
+        \[
+            f_{\varphi(n)}(x)-2\varepsilon\leq f(x)\leq f_{\varphi(n)}(x)+2\varepsilon
+        \]
+        Il reste à traiter les points de discontinuité de $f$. 
+        Comme $f$ est croissante, ils sont en un nombre au plus dénombrable, on peut alors faire une autre extraction diagonale et conclure.
+    \end{proof}
+
+    \begin{remarks}
+        Pourquoi une applicaiton $f:I\to\R$ croissante n'a qu'un nombre au plus dénombrable de points de discontinuité ?
+        Par croissance de $f$, cette fonction admet des limites à gauche et à droite en tout point.
+        Notons $D$ l'ensemble des points de discontinuité de $f$. 
+        Pour $x\in D$, $f(x-)<f(x+)$ (car sinon $f$ serait continue en $x$, puis l'inégalité est dans ce sens en vertu de la croissance de $f$), donc on peut choisir $\varphi(x)\in]f(x-),f(x+)[$ un rationnel. 
+        On a ainsi défini une fonction $\varphi:D\to \Q$. On remarque alors qu'elle est injective, en vertu de la croissance de $f$ : si $x\neq y$ sont des éléments de $D$, avec $x<y$ par exemple, alors $\varphi(x)<f(x+)\leq f(y-)<\varphi(y)$. 
+        Finalement $\Card D=\Card\varphi(D)$, mais $\varphi(D)\subset \Q$, donc $D$ est au plus dénombrable.
+    \end{remarks}
+    
+    \begin{exo}
+       Soient $E$ et $F$ deux espaces vectoriels normés et $f:E\to F$ continue. 
+       Soit $(K_n)$ une suite décroissante de compacts de $E$. Montrer que 
+       \[
+            f\left(\bigcap_{n\in\N}K_n\right)=\bigcap_{n\in\N}f(K_n)
+       \]
+    \end{exo}
+
+    \begin{proof}
+        L'inclusion $\subseteq$ est toujours vraie. Il reste à prouver l'inclusion récirpoque. 
+        Soit $y\in\bigcap_nf(K_n)$. 
+        Il existe alors, pour tout $n\in\N$, $x_n\in K_n$ tel que $y=f(x_n)$. 
+        Par décroissance de la suite $(K_n)_n$, les $x_n$ sont tous dans $K_0$, un compact. 
+        On peut en extraire une suite $(x_{\varphi(n)})_n$ qui converge, de limite notée $x$. 
+        En regardant la suite $(x_{\varphi(n)})_{n\geq p}$, on montre que $x\in K_{\varphi(p)}$ pour tout entier $p$, mais comme $\varphi$ est une extractrice, $\varphi(p)\geq p$ pour tout $p\in\N$, donc $x\in K_p$ pour tout $p\in\N$ par décroissance de $(K_n)_n$. 
+        D'où $y=f(x)$ par continuité de $f$ donc $y\in f\left(\bigcap_nK_n\right)$.
+    \end{proof}
+
+    \subsection*{Élève 3*}
+
+    \begin{exo}
+       On définit une suite de fonctions $(f_n)_{n\geq 1}$ de $\R^+$ dans $\R$ par 
+       \[
+            \left\lbrace\begin{array}{c c}f_n(x)=0 & x\in[0,1/n]\\ f_n(x)=\frac1{n\ln(1-1/nx)} & x > 1/n\end{array}\right.
+       \]
+       Étudier la limite simple, puis la convergence uniforme, de la suite de fonctions $(f_n)$.
+    \end{exo}
+
+    \begin{remarks}
+        Attention ! Pour cet exercice, j'avais proposé d'écrire $\frac1{n\ln(1-1/nx)}+x=\frac1n\varphi(nx)$ avec $\varphi(t)=\frac1{n\ln(1-1/t)}+t$ pour avoir la convergence uniforme. 
+        Pour pouvoir conclure, il faut bien faire attention à montrer que $|\varphi(t)|\to 1/2$ à mesure que $t\to\infty$ et NON $|\varphi(nx)|\to 1/2$ à mesure que $n\to\infty$ pour tout $x$, puisque dans le deuxième cas on ne se débarrasse pas de la dépendance en $x$ !
+    \end{remarks}
+
+    \begin{exo}
+        Existe-t-il une fonction continue injective $[0,1]^2\to[0,1]$ ?
+    \end{exo}
+
+    \subsection*{Élève 1}
+
+    \begin{ccp}\hfill
+        \begin{enumerate}
+            \item Soit $X$ un ensemble, $(g_n)$ une suite de fonctions de $X$ dans $\C$ et $g$ une fonction de $X$ dans $\C$. 
+            Donner la définition de la convergence uniforme sur $X$ de la suite de fonctions $(g_n)$ vers la fonction $g$. 
+
+            \item On pose $f_n(x)=\frac{n+2}{n+1}e^{-nx^2}\cos(\sqrt{n}x)$.
+            \begin{enumerate}
+                \item Étudier la convergence simple de la suite de fonctions $(f_n)$.
+                \item La suite de fonctions $(f_n)$ converge-t-elle uniformément sur $[0,+\infty[$ ?
+                \item Soit $a>0$. La suite de fonctions $(f_n)$ converge-t-elle uniformément sur $[a,+\infty[$ ?
+                \item La suite de fonctions $(f_n)$ converge-t-elle uniformément sur $]0,+\infty[$ ?
+            \end{enumerate}
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Soit $(A_i)_{i\in I}$ une famille de parties connexes par arcs d'un espace vectoriel normé $E$ telles que $\bigcap_{i\in I}A_i\neq \varnothing$. 
+        Démontrer que $\bigcup_{i\in I} A_i$ est encore connexe par arcs.
+    \end{exo}
+
+    \begin{exo}
+        Soit $D:R[X]\to\R[X]$ l'endomorphisme de dérivation sur $R[X]$.
+        Étudier la continuité de $D$ lorsque $\R[X]$ est muni de la norme 
+        \begin{enumerate}[(i)]
+            \item $N_1(P)=\sum_{k=0}^\infty|P^{(k)}(0)|$ ;
+            \item $N_2(P)=\sup_{t\in[0,1]}|P(t)|$.
+        \end{enumerate}
+    \end{exo}
+ 
+
+    \subsection*{Élève 2}
+
+    \begin{ccp}
+        Soient $E$ et $F$ deux espaces vectoriels normés sur le corps $\R$.
+        On note $\norm{\cdot}_E$ (resp. $\norm{\cdot}_F$) la norme sur $E$ (resp. $F$).
+        \begin{enumerate}
+            \item Démontrer que si $f$ est une application linéaire de $E$ dans $F$, alors les propriétés suivantes sont équivalentes 
+            \begin{itemize}
+                \item[P1] $f$ est continue sur $E$.
+                \item[P2] $f$ est continue en $0_E$.
+                \item[P3] $\exists k>0$, $\forall x\in E$, $\norm{f(x)}_F\leq k\norm{x}_k$. 
+            \end{itemize}
+            \item Soit $E$ l'espace vectoriel des applications continues de $[0,1]$ dans $\R$ muni de la norme définie par $\norm{f}_\infty=\sup_{x\in[0,1]}|f(x)|$. 
+            On considère l'application $\varphi$ de $E$ dans $\R$ définie sur $E$ par
+            \[
+                \varphi(f)=\int_0^1f(t)\dd t
+            \]
+            Démontrer que $\varphi$ est linéaire puis continue.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Soit $E=\R[X]$ muni de la norme $\norm{\sum_ia_iX^i}=\sum_i|a_i|$.
+        \begin{enumerate}
+            \item Étudier la continuité de $\varphi:(E,\norm\cdot)\to(E,\norm\cdot)$, $P\mapsto P(X+1)$. 
+            \item Étudier la continuité de $\psi_A:(E,\norm\cdot)\to(E,\norm\cdot)$, $P\mapsto AP$ pour $A\in E$.
+        \end{enumerate}
+    \end{exo}
+
+    \begin{proof}\hfill
+        \begin{enumerate}
+            \item L'application linéaire $\varphi$ n'est pas continue. Sinon, il existe un réel de continuité $C$ tel que pour tout polynôme $P$, 
+            \[
+                \norm{P(X+1)}_1\leq C\norm{P}_1
+            \]
+            Mais alors, en appliquant cela pour $P_n=X^n$ pour tout $n\in\N$, on a 
+            \[
+                n\leq \norm{(X+1)^n}_1\leq C\norm{X^n}_1=C
+            \]
+            ce qui donne une absurdité... 
+            \item On peut montrer, en écrivant les coefficients d'un produit de polynômes, que 
+            \[
+                \norm{AP}_1\leq (\deg A+1)\norm{A}_\infty \norm{P}
+            \]
+            ce qui montre que $\psi$ est continue, puisque $\psi$ est linéaire et que la ligne précédente vaut pour tout polynôme $P$.
+        \end{enumerate}
+    \end{proof}
+
+    \subsection*{Élève 3}
+
+    \begin{ccp}
+        Soit $E$ l'ensemble des suites à valeurs réelles qui convergent vers $0$. 
+        \begin{enumerate}
+            \item Prouver que $E$ est un sous-espace vectoriel de l'espace vectoriel des suites à valeurs réelles. 
+            \item On pose, pour toute suite $u\in E$, $\norm{u}=\sup_{n\in\N}|u_n|$.
+            \begin{enumerate}
+                \item Prouver que $\norm{\cdot}$ est une norme sur $E$.
+                \item Prouver que pour toute suite $u\in E$, $\sum u_n2^{-(n+1)}$ converge.
+                \item On pose, pour toute suite $u\in E$, $f(u)=\sum_{n=0}^\infty u_n2^{-(n+1)}$. Prouver que $f$ est continue sur $E$.
+            \end{enumerate}
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+       Soit $a\geq 0$. On pose $f_n:x\in[0,1]\mapsto n^ax^n(1-x)$ pour tout $n\in \N$. Montrer que la suite $f_n$ converge simplement vers $0$ sur $[0,1]$, mais que la convergence est uniforme si et seulement si $a<1$.
+    \end{exo}
+
+    \begin{exo}
+        Sur un evn $E$, montrer que si deux normes sont équivalentes, alors les normes subordonnées sur $\mathcal L_c(E)$ associées sont encore équivalentes.
+    \end{exo}
+
+    \begin{proof}
+        Soient $\norm{\cdot}_1$ et $\norm{\cdot}_2$ deux normes équivalentes sur $E$. 
+        Il existe alors $a>0$ tel que 
+        \[
+            \frac1a\norm{\cdot}_2\leq \norm{\cdot}_1\leq a\norm{\cdot}_2
+        \]
+        Soit $\varphi\in\mathcal L_c(E)$. Pour $x\in E$, on a 
+        \[
+            \frac1a\norm{\varphi(x)}_2\leq\norm{\varphi(x)}_1\leq\tnorm{\varphi}_1\norm{x}_1\leq a\tnorm{\varphi}_1\norm{x}_2
+        \]
+        Ceci valant pour tout $x\in E$, cela montre que 
+        \[
+            \tnorm{\varphi}_2\leq a^2\tnorm{\varphi}_1
+        \]
+        Le raisonnement est le même en permutant les indices $1$ et $2$, d'où
+        \[
+            \tnorm{\varphi}_1\leq a^2\tnorm{\varphi}_2
+        \]
+        Finalement, pour tout endomorphisme continu $\varphi$ de $E$, on a 
+        \[
+            \frac1{a^2}\tnorm{\varphi}_1\leq\tnorm{\varphi}_2\leq a^2\tnorm{\varphi}_1
+        \]
+    \end{proof}
+
+\end{document}
