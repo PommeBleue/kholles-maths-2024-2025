@@ -1,0 +1,184 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    %\maketitle
+    
+    \subsection*{Élève 1*}
+    \begin{exo}
+        Soit $(f_n)$ une suite de fonctions $[a,b]\to \R$ convergeant simplement vers $f\colon[a,b]\to\R$. 
+        On suppose que toutes les fonctions $f_n$ sont $k$-lip avec le même $k>0$. 
+        Montrer que $(f_n)$ converge uniformément vers $f$ sur $[a,b]$.
+    \end{exo}
+
+    \begin{remarks}\hfill
+        \begin{enumerate}
+            \item Le résultat de l'exercice devient totalement faux si on remplace $[a,b]$ par un intervalle quelconque. Pouvez-vous voir pourquoi ?
+            \item Le résultat subsiste si au lieu du caractère $k$-lipschitzien, on demande aux fonctions $f_n$ d'être continues et convexes et à la fonction $f$ d'être continue.
+            Petit exercice : le démontrer à la maison.
+        \end{enumerate}
+    \end{remarks}
+
+    \begin{exo}
+        Convergence simple, normale et uniforme de $\sum\frac{xe^{-nx}}{\ln n}$.
+    \end{exo}
+
+    \subsection*{Élève 2*}
+    \begin{exo}\hfill
+        \begin{enumerate}
+            \item Que dire de l'intersection d'une suite \textit{décroissante} de compacts \textit{non vides} dans un evn ?
+            \item En déduire que si $(f_n\colon[a,b]\to\R)$ est une suite \textit{croissante} de fonctions \textit{continues} qui converge simplement vers une fonction $f$ \textit{continue} sur $[a,b]$, 
+            alors la convergence est uniforme.
+        \end{enumerate}
+    \end{exo}
+
+    \begin{proof}\hfill
+        \begin{enumerate}
+            \item L'intersection est non vide.
+            \item Par croissance de la suite $(f_n)$, la convergence uniforme est équivalente à 
+            \[
+                \forall \varepsilon > 0,\ \exists N\geq 0,\ \forall n\geq N,\quad f_n + \varepsilon > f
+            \]
+            puisque $f\geq f_n$ pour tout entier $n\geq 0$. 
+            Soit $\varepsilon > 0$, on va montrer le reste de la phrase ci-dessus par l'absurde. 
+            Supposons sa négation, autrement dit, si on pose $K_n=\lbrace x\in[a,b]\colon f_n(x)+\varepsilon \leq f(x)\rbrace$,
+            \[
+                \forall N\geq 0,\ \exists n\geq N,\ K_n\neq\emptyset\tag*{(1)}
+            \]
+            Via (1), on peut trouver une applicaiton $\varphi\colon\N\to\N$ strictement croissante telle que pour tout $n\in\N$, $K_{\varphi(n)}\neq\emptyset$.
+            On peut voir que les $K_{\varphi(n)}$ sont des compacts en tant que fermés (vu la continuité de $f_{\varphi(n)}-f$) du compact $[a,b]$, et que la suite $(K_{\varphi(n)})$ est décroissante en vertu de la croissance de $(f_n)$.
+            On se retrouve alors dans le cadre des hypothèses de la première question, on peut alors trouver un élément $x\in\bigcap_nK_{\varphi(n)}$.
+            Ainsi, 
+            \[
+                \forall n\in\N,\ f_{\varphi(n)}(x)+\varepsilon\leq f(x)
+            \]
+            Soit, en passant à la limite $f(x)+\varepsilon\leq f(x)$, soit $\varepsilon\leq 0$, ce qui n'est pas.
+
+            En conclusion, $(f_n)$ converge uniformément vers $f$ sur $[a,b]$.
+        \end{enumerate}    
+    \end{proof}
+
+    \begin{exo}
+        On définit une suite $(u_n)$ de fonctions de $[0,1]$ dans $\R$ par $u_0(x)=1$ et pour tout $n\geq 0$, 
+        \[
+            u_{n+1}(x)=1+\int_0^xu_n(t-t^2)\dd t
+        \]
+        \begin{enumerate}
+            \item Démontrer que $(u_n)$ converge uniformément sur $[0,1]$.
+            \item Démontrer que la limite uniforme de $(u_n)$ est solution de l'équation différentielle $u'(x)=u(x-x^2)$.
+        \end{enumerate}
+    \end{exo}
+
+    \begin{proof}
+        Vous pouvez trouver une correction d'une version plus détaillée de l'exercice \href{https://www.bibmath.net/ressources/index.php?action=affiche&quoi=mathspe/feuillesexo/suiserfonc&type=fexo}{ici} (exercice 21).
+    \end{proof}
+
+    \subsection*{Élève 3}
+    \begin{ccp}\hfill
+        \begin{enumerate}
+            \item Rappeler et démontrer le CSSA.
+            \item On pose $f_n(x)=(-1)^ne^{-nx}/n$. 
+            \begin{enumerate}
+                \item Étudier la convergence simple sur $\R$ de $\sum_{n\geq 1} f_n$. 
+                \item Étudier la convergence uniforme sur $\R_+$ de $\sum_{n\geq 1} f_n$.
+            \end{enumerate}
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Pour tout $n\in\N^*$, on définit l'applicaiton
+        \[
+            u_n\colon\R^+\hskip-.3em\to\R\quad x\mapsto\frac x{n^2+x^2}
+        \]
+        \begin{enumerate}
+            \item Montrer que la série de fonctions $\sum u_n$ converge simplement sur $\R^+$ vers une fonction continue $f$, mais que la convergence n'est pas uniforme sur $\R^+$.
+            \item Montrer que la série de fonctions $\sum (-1)^nu_n$ converge uniformément sur $\R^+$ tout entier, mais que la convergence n'est pas normale sur $\R^+$.
+        \end{enumerate}
+    \end{exo}
+
+    \begin{proof}
+        Dans la première question, la convergence uniforme fait défaut parce que pour $x>0$ et $p\geq 1$
+        \[
+            \sum_{n=p+1}^{2p}\frac{x}{x^2+n^2}\geq\sum_{n=p+1}^{2p}\frac{x}{x^2+4p^2}\geq\frac{px}{x^2+4p^2}\geq\frac{p^2}{p^2+4p^2}=\frac15
+        \]
+    \end{proof}
+
+    \subsection*{Élève 4}
+    \begin{ccp}
+        \begin{enumerate}
+            \item Soit $(f_n\colon D\to\C)$ une suite de fonctions, avec $D\subset \C$, telle que $\sum f_n$ converge uniformément sur $D$. 
+            Démontrer que $f_n$ converge uniformément sur $D$ et donner sa limite.
+            \item On considère la suite de fonctions $(f_n\colon x\in\R^+\mapsto nx^2e^{-x\sqrt n})$.
+            \begin{enumerate}
+                \item Démontrer que $\sum f_n$ converge simplement sur $\R^+$.
+                \item La série de fonctions $\sum f_n$ converge-t-elle uniformément ? Justifier.
+            \end{enumerate}
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Montrer que $x\mapsto S(x)=\sum_{n=1}^\infty\frac1{n^3+n^2x}$ est de classe $\mathcal C^\infty$ sur $\R^+$.
+    \end{exo}
+
+    \begin{proof}
+        En posant $f_n(x)=\frac1{n^3+n^2x}=\frac1{n^3}u_n(x)$ et $u_n(x)=\frac1{1+x/n}$, on peut montrer que
+        \[
+            \forall n\geq 0,\ \forall k\geq0,\ \forall x\geq 0,\ u_n^{(k)}(x)=\frac{(-1)^kk!}{n^k}u_n(x)^{k+1}
+        \]
+        Et on peut en déduire le résultat de l'énoncé.
+    \end{proof}
+
+    \subsection*{Élève 5}
+    \begin{ccp}\hfill
+        \begin{enumerate}
+            \item Soit $(f_n)$ une suite de fonctions à valeurs réelles définies et continues sur un segment $[a,b]$ non vide. 
+            
+            Démontrer que si $(f_n)$ converge uniformément sur $[a,b]$ vers une fonction $f$, alors $\int_a^bf_n\to\int_a^bf$.
+            \item Montrer que
+            \[
+                \int_0^{\frac12}\left(\sum_{n=0}^\infty x^n\right)\dd x=\sum_{n=1}^\infty\frac1{n2^n}
+            \]
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        On considère la fonction définie par 
+        \[
+            f(x) = \sum_{n=0}^\infty\frac{n^x}{x^n}
+        \]
+        Déterminer le domaine $D$ de définition de $f$ et étudier la continuité de $f$ sur $D$.
+    \end{exo}
+
+    \begin{proof}
+        On peut vérifier que pour $|x|>1$, on a $|n^x/x^n|=o(1/n^2)$. 
+        Puis le CSSA permet de montrer que $f$ est définie en $-1$.
+        Si $|x|<1$, alors clairement $n^x/x^n\to+\infty$ à mesure que $n\to+\infty$ et $f$ n'est pas non plus déifinie en $1$.
+        On en déduit que $D=]-\infty,-1]\cup]1,+\infty[$.
+
+        Pour la continuité, on obtient facilement la convergence uniforme sur tout segment : je le laisse en exercice pour vous.
+    \end{proof}
+
+    \subsection*{Élève 6}
+    \begin{ccp}
+        On considère la série de fonctions de terme général définie par 
+        \[
+            \forall n\in\N^*,\ \forall x\in[0,1],\quad f_n(x)=\ln\left(1+\frac xn\right)-\frac xn
+        \]
+        Lorsque la série converge, on pose $S(x)=\sum_{n=1}^\infty f_n(x)$.
+        \begin{enumerate}
+            \item Démontrer que $S$ est bien définie sur $[0,1]$.
+            \item Pour $n\in\N$, on pose $u_n=\ln(n+1)-H_n$, où $H_n$ est la somme harmonique d'ordre $n$.
+            Démontrer que $(u_n)$ converge et en déduire un équivalent de $H_n$ lorsque $n\to\infty$.
+            \item Démontrer que $S$ est $\mathcal C^1$ sur $[0,1]$ et calculer $S'(1)$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Soit $(f_n)$ une suite de fonctions continues qui converge uniformément vers $f$ sur un intervalle $I$.
+        Soit $(x_n)$ une suite d'éléments de $I$ qui converge vers $x\in I$. 
+        Démontrer que $(f_n(x_n))$ converge et déterminer sa limite.
+    \end{exo}
+\end{document}
