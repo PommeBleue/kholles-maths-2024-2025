@@ -1,0 +1,215 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    %\maketitle
+    
+    \subsection*{Élève 1*}
+    \begin{exo}
+        Soient $\sum a_n x^n$ et $\sum b_n x^n$ deux séries entières de rayon de convergence $\geq 1$.
+        On suppose que $b_n>0$ pour tout $n$ et que la série $\sum b_n$ diverge. 
+        Pour tout $n\in\N$, on pose $A_n=\sum_{k=0}^na_k$ et $B_n=\sum_{k=0}^nb_k$. 
+        \begin{enumerate}
+            \item S'il existe $\ell\in\C$ tel que 
+            \[
+                \lim_{n\to+\infty}\frac{a_n}{b_n}=\ell\quad\text{ou}\quad\lim_{n\to+\infty}\frac{A_n}{B_n}=\ell,
+            \]
+            montrer que 
+            \[
+                \lim_{\begin{smallmatrix}x\to 1\\ x < 1\end{smallmatrix}}\frac{\sum_{n=0}^\infty a_nx^n}{\sum_{n=0}^\infty b_nx^n}=\ell
+            \]
+            \item Si on suppose simplement qu'il existe $\ell\in\C$ tel que 
+            \[
+                \lim_{n\to+\infty}\frac{A_0+\dots+A_{n-1}}n=\ell
+            \]
+            montrer que $\lim_{\begin{smallmatrix}x\to 1\\ x < 1\end{smallmatrix}}\sum_{n=0}^{+\infty}a_nx^n=\ell$.
+            \item Lorsque $x$ tend vers $1$ par valeurs inférieures, montrer les équivalents
+            \[
+                \sum_{n=0}^{+\infty}x^{n^2}\sim\frac{\sqrt\pi}{2\sqrt{1-x}},\quad 
+                \sum_{n=0}^{+\infty}x^{a^n}\sim\frac{\ln(1-x)}{\ln a},\quad
+                \sum_{n=0}^{+\infty}(-1)^nx^{4n+1}\sim\frac12
+            \]
+        \end{enumerate}
+    \end{exo}
+
+    \subsection*{Élève 2*}
+    \begin{exo} Soit $f$ la somme d'une série entière $\sum a_nz^n$ de rayon de convergence $R > 0$. 
+        \begin{enumerate}
+            \item Calculer pour tout $r\in\mathopen]0,R\mathclose[$
+            \[
+                \int_{0}^{2\pi}|f(re^{i\theta})|^2\d\dd \theta
+            \]
+            \item On suppose à présent que $a_n\in\Z$ pour tout $n\in\N$, que $R\geq 1$ et que $f$ est bornée sur le disque unité ouvert.
+            Montrer que $f$ est une fonction polynomiale.
+        \end{enumerate}
+    \end{exo}
+
+    \begin{proof}
+        Pour l'égalité de Parseval, on peut d'abord commencer par écrire 
+        \[
+            \int_0^{2\pi}|f(re^{i\theta})|^2\dd\theta=\int_0^{2\pi}\sum_{k=0}^\infty \overline{a_k}r^ke^{-ik\theta}f(re^{i\theta})\dd\theta
+        \]
+        Mais comme $|\overline{a_k}r^ke^{-ik\theta}f(re^{i\theta})\dd\theta|\leq \norm{f}_\infty^{D_f(0,r)}|a_k|r^k$, il y a convergence normale donc uniforme sur $[0,2\pi]$
+        de la série dont on prend l'intégrale donc 
+        \[
+            \int_0^{2\pi}|f(re^{i\theta})|^2\dd\theta=\sum_{k=0}^\infty\overline{a_k}r^k\int_0^{2\pi} e^{-ik\theta}f(re^{i\theta})\dd\theta
+        \]
+        De la même manière, pour un certain $k\in\N$, on a 
+        \[
+            \int_0^{2\pi} e^{-ik\theta}f(re^{i\theta})\dd\theta=\int_0^{2\pi}\sum_{p=0}^\infty a_pr^pe^{i(p-k)\theta}\dd\theta
+        \]
+        Là, l'égalité $|a_pr^pe^{i(p-k)\theta}|=|a_pr^p|$ montre que l'on peut intervertir l'intégrale et la somme pour retrouver 
+        \[
+            \int_0^{2\pi} e^{-ik\theta}f(re^{i\theta})\dd\theta=\sum_{p=0}^\infty a_pr^p\underbrace{\int_0^{2\pi} e^{i(p-k)\theta}\dd\theta}_{=\delta_{p,k}2\pi}
+        \]
+        De sorte que, finalement 
+        \[
+            \int_0^{2\pi}|f(re^{i\theta})|^2\dd\theta=\sum_{k=0}^\infty\overline{a_k}r^ka_kr^k2\pi=2\pi\sum_{k=0}^\infty|a_k|^2r^{2k}
+        \]
+
+
+        Pour faire la deuxième question, on remarque que, comme $f$ est bornée sur le disque unité ouvert, 
+        alors pour tout $r\in\mathopen]0,1\mathclose[$, en se servant de l'égalité de Parseval, 
+        \[
+            \forall N\geq0,\quad \sum_{k=0}^N|a_k|^2r^{2k}\leq \sum_{k=0}^\infty |a_k|^2r^{2k}\leq M,\quad \text{pour un certain}\ M\in\R
+        \]
+        Autrement dit, les sommes partielles évaluées en $r\in\mathopen]0,1\mathclose[$ sont uniformément bornées (en $r$ et en $N$).
+        En prenant la limite à mesure que $r\to 1$ des sommes partielles pour tout $N$, on montre que la suite $(\sum_{k=0}^N|a_k|^2)$ est bornée,
+        donc convergente. Autrement dit $|a_k|^2\to 0$ ou $a_k\to 0$, mais $(a_k)$ est une suite d'entiers, elle est donc nécessairement nulle a.p.d.c.r.
+    \end{proof}
+
+    \begin{remarks}
+        Remarquons que cela veut dire que si une série entière à coefficients entiers a un rayon $>1$, c'est forcément un polynôme. 
+    \end{remarks}
+
+    \begin{exo}
+        Rayon de convergence de $\sum e^{n\sin n}x^n$.
+    \end{exo}
+
+    \begin{proof}
+        Déjà, 
+        \[
+            e^{n\sin n}e^{-n}=e^{n(\sin n - 1)}\leq 1,\quad \text{car}\ n(\sin n - 1)\leq 0
+        \]
+        Donc le rayon de convergence de la série entière étudiée est au moins égal à $1/e$. 
+        On va montrer qu'il est égal à $1/e$. 
+        Pour cela, on va justifier de l'existence d'une suite d'entiers $(n_k)$, strictement croissante et telle que 
+        $\sin n_k\to 1$ à mesure que $k\to\infty$. 
+
+        On rappelle un résultat sur les sous-groues de $(\R,+)$ : ils sont soit de la forme $\alpha\Z$ (on dit d'un sous-groupe de cette forme qu'il est discret), soit denses dans $\R$.
+        On peut alors voir que dès que $\alpha$ et un réel incommensurable à $\pi$ (c'est-à-dire dont le quotient par $\pi$ ne donne pas un rationnel),
+        le sous-groupe $\alpha\Z+2\pi\Z$ n'est pas discret (sinon on montrerait que $\alpha$ est commensurable à $\pi$), donc dense dans $\R$.
+        On peut justifier qu'il en est de même pour $\alpha\N+2\pi\Z$ pour tout $\alpha$ non commensurable à $\pi$. 
+        Dès lors, $\N+2\pi\Z$ est dense dans $\R$, et par continuité de la fonction $\sin$, $\sin(\N+2\pi\Z)=\sin(\N)$ est dense dans $\sin(\R)=[-1,1]$.
+        Ce qui montre que $1$ est bien valeur d'adhérence de $(\sin n)_n$. 
+
+        Ceci étant, on en conclut que le rayon de convergence de notre série est bien $1/e$ comme suit : si $r>1/e$, alors 
+        \[
+            e^{n_k\sin(n_k)}r^{n_k}=e^{n_k(\sin(n_k)+\ln r)}
+        \]
+        Comme $\ln r > -1$, $\sin(n_k) + \ln r \to 1 + \ln r > 0$, donc $e^{n_k\sin(n_k)}r^{n_k}\to +\infty$ à mesure que $k\to\infty$. 
+        Mais toute suite extraite d'une suite bornée est bornée, donc par contraposée, $(e^{n\sin n}r^n)$ n'est pas bornée. D'où le résultat.
+    \end{proof}
+
+    \begin{remarks}
+        Le fait que comme $\alpha\Z + 2\pi\Z$ est dense pour $\alpha\notin\pi\Q$, $\alpha\N+2\pi\Z$ est encore dense n'est 
+        pas tout à fait trivial. 
+        Pour le montrer, on pourra prendre $a<b$ et choisir $x=\alpha s + 2\pi t$ vérifiant $0 < x < b-a$
+        et discriminer selon que $s\geq 0$ ou $s < 0$ pour construire un élément de $\alpha\N+2\pi\Z$ qui est dans $\mathopen]a,b\mathclose[$.
+    \end{remarks}
+
+    \subsection*{Élève 3}
+
+    \begin{ccp}
+        Soit $(a_n)$ une suite de complexes telle que $(|a_{n+1}/a_n|)$ admet une limite.
+        \begin{enumerate}
+            \item Démontrer que les séries entières $\sum a_nx^n$ et $\sum(n+1)a_{n+1}x^n$ ont même rayon de convergence, que l'on note $R$. 
+            \item Démontrer que $x\mapsto \sum_{n=0}^\infty a_nx^n$ est $\mathcal C^1$ sur $\mathopen]-R,R\mathclose[$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        On note $H_n=\sum_{k=1}^n\frac 1k$. 
+        Déterminer le rayon de convergence et la somme de $\sum H_nx^n$.
+    \end{exo}
+
+    \newpage
+    \subsection*{Élève 4*}
+    \begin{qc}
+        Justifier que $x\mapsto \frac{e^x-1}x$ et  $x\mapsto \frac{x-\sh(x)}{x^3}$ sont de classe $\mathcal C^\infty$ en $0$.
+    \end{qc}
+
+    \begin{exo}
+        Soient $\alpha\in\R\backslash \N$ et, pour $|x|<1$, $f(x)=(1+x)^\alpha$.
+        \begin{enumerate}
+            \item Donner une suite réelle $(a_n)$ telle que $\forall x\in\mathopen]-1,1\mathclose[$, $f(x)=\sum_{n=1}^\infty a_nx^n$.
+            \item Montrer qu'il existe $C>0$ tel que $|a_n|\sim \frac{C}{n^{1+\alpha}}$.
+            \item La série $\sum a_n$ converge-t-elle ? Si oui, quelle est sa somme ?
+        \end{enumerate}
+    \end{exo}
+
+    \begin{proof}
+        Pour la deuxième question, on peut commencer par écrire 
+        \[
+            n^{\alpha+1}a_n=n^{\alpha+1}\frac{\alpha(\alpha-1)\dots(\alpha-(n-1))}{n!}=n^{\alpha+1}\prod_{k=1}^n\left(\frac{\alpha+1}k-1\right)
+        \]
+        On notera $p$ un entier tel que $\alpha+1\leq p$, il existera alors un réel $c>0$ tel que 
+        \[
+            n^{\alpha+1}|a_n|=cn^{1+\alpha}\prod_{k=p}^n\left(1-\frac{\alpha+1}k\right)
+        \]
+        pour tout entier $n\geq p$. 
+        On passera au $\ln$ pour obtenir 
+        \[
+            v_n:=\ln(n^{1+\alpha}|a_n|)=\ln(c)+(1+\alpha)\ln(n)+\sum_{k=p}^n\ln\left(1-\frac{\alpha+1}k\right),
+        \]
+        de sorte que 
+        \begin{align*}
+            v_{n+1}-v_n &= (1+\alpha)\ln\left(1+\frac1n\right)+\ln\left(1-\frac{\alpha+1}{n+1}\right)\\
+                        &= \frac{\alpha+1}n+O\left(\frac1{n^2}\right)-\frac{\alpha+1}{n+1}+O\left(\frac1{(n+1)^2}\right)\\
+                        &= \frac{\alpha+1}{n(n+1)}+O\left(\frac1{n^2}\right)
+        \end{align*}
+        On en déduit que $(v_n)$ converge, ou que $(n^{1+\alpha}|a_n|)$ converge par continuité de $\exp$. 
+    \end{proof}
+
+
+    \subsection*{Élève 5}
+
+    \begin{ccp}\hfill
+        \begin{enumerate}
+            \item Définition du rayon de convergence.
+            \item Rayon de $\sum \frac{z^{2n+1}}{\binom {2n}n}$, $\sum n^{(-1)^n}z^n$ et $\sum \cos n z^n$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Soit $a_n=2^{-n}\int_0^1(1+t^2)^n\dd t$. 
+        \begin{enumerate}
+            \item Montrer que $(a_n)$ converge.
+            \item Étudier la série $\sum (-1)^na_n$.
+            \item On considère la série entière $\sum a_nx^n$. On note $R$ son rayon de convergence et $f$ sa somme.
+            \begin{enumerate}
+                \item Montrer que pour tout entier $n\geq0$, $a_n\geq 1/(2n+1)$. 
+                \item En déduire $R$.
+                \item Montrer que $f$ vérifie une équation différentielle d'ordre $1$ à déterminer.
+            \end{enumerate}
+        \end{enumerate}
+    \end{exo}
+
+    \subsection*{Élève 6}
+
+    \begin{ccp}\hfill
+        \begin{enumerate}
+            Soit $(a_n)$ une suite de complexes telle que $(|a_{n+1}/a_n|)$ admet une limite.
+            \item Démontrer que les séries entières $\sum a_nx^n$ et $\sum(n+1)a_{n+1}x^n$ ont même rayon de convergence, que l'on note $R$. 
+            \item Démontrer que $x\mapsto \sum_{n=0}^\infty a_nx^n$ est $\mathcal C^1$ sur $\mathopen]-R,R\mathclose[$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        On note $H_n=\sum_{k=1}^n\frac 1k$. 
+        Déterminer le rayon de convergence et la somme de $\sum H_nx^n$.
+    \end{exo}
+\end{document}
