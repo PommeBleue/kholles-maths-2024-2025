@@ -1,0 +1,156 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    \subsection*{Élèves 1 \& 4}
+    \begin{ccp}
+        Rayon de convergence et somme de 
+        \[
+            \sum\frac{3^nx^{2n}}n,\quad\sum a_nx^n,\ a_{2n}=4^n,\ a_{2n+1}=5^{n+1}
+        \]
+    \end{ccp}
+
+    \begin{proof}
+        \[
+            R_1=\frac1{\sqrt3},\ S_1(x)=-\ln(1-3x^2),\quad R_2=\frac1{\sqrt5},\ S_2(x)=\frac1{1-4x^2}+\frac{5x}{1-5x^2}
+        \]
+    \end{proof}
+
+    \begin{exo}
+        \begin{enumerate}
+            \item Donner le rayon de convergence de la série entière $\sum_{n\geq 2}(-1)^n\ln(n)x^n$.
+            On notera $S$ sa somme. 
+            \item Montrer que 
+            \[
+                \forall x\in\mathopen]-1,1\mathclose[,\quad 
+                S(x)=\frac1{1+x}\sum_{n=1}^\infty(-1)^{n+1}\ln\left(1+\frac1n\right)x^{n+1}
+            \]
+            \item Montrer que la limite de $S$ en $1^-$ est égale à $\frac12\sum_{n=1}^\infty(-1)^{n+1}\ln\left(1+\frac1n\right)$.
+            \item Calculer cette limite. 
+            
+            \textit{Indication : penser à la formule de Stirling}
+        \end{enumerate}
+    \end{exo}
+
+    \begin{proof}
+        Pour la dernière question, on calcule les sommes partielles d'ordre pair de la série dont on veut calculer la somme. 
+        Pour $n\geq 1$, on a 
+        \begin{align*}
+            \sum_{k=1}^{2n}(-1)^{k+1}\ln\left(1+\frac1k\right)
+            &=-\sum_{k=1}^n\ln\left(1+\frac1{2k}\right)
+            +\sum_{k=1}^n\ln\left(1+\frac1{2k-1}\right)\\
+            &=\ln\left(\prod_{k=1}^n\frac{2k}{2k+1}\right)
+            +\ln\left(\prod_{k=1}^n\frac{2k}{2k-1}\right)\\
+            &=\ln\left(\prod_{k=1}^n\frac{4k^2}{(2k+1)2k}\right)
+            +\ln\left(\prod_{k=1}^n\frac{4k^2}{2k(2k-1)}\right)\\
+            &=\ln\left(\frac{(2^nn!)^2}{(2n+1)!}\right)+\ln\left(\frac{(2^nn!)^2}{(2n)!}\right)\\
+            &=\ln\left(\frac{(2^nn!)^4}{(2n+1)((2n)!)^2}\right)
+        \end{align*}
+        On calcule un équivalent de l'expression à l'intérieur du $\ln$ en se servant de la formule de Stirling 
+        \[
+            \frac{(2^nn!)^4}{(2n+1)((2n)!)^2}\sim 
+            \frac{2^{4n}\sqrt{2\pi n}^4\left(\frac ne\right)^{4n}}{2n\sqrt{4n\pi}^2\left(\frac{2n}e\right)^{4n}}\sim 
+            \frac\pi2            
+        \]
+        On conclut par continuité de $\ln$ à l'égalité 
+        \[
+            \sum_{n=1}^\infty(-1)^{n+1}\ln\left(1+\frac1n\right)=\ln\left(\frac\pi2\right)
+        \]
+    \end{proof}
+    
+
+    \subsection*{Élèves 2 \& 5}   
+    \begin{ccp}
+        \begin{enumerate}
+            \item Déterminer le rayon de convergence de la série entière $\sum\frac{x^n}{(2n)!}$. 
+            On notera $S$ sa somme sur son disque ouvert de convergence. 
+            \item Rappeler le dse${}_0$ de $\ch$ en précisant le rayon de convergence. 
+            \item \begin{enumerate}
+                \item Déterminer $S$.
+                \item On considère la fonction $f$ définie sur $\R$ par $f(0)=1$ et
+                \[
+                    \forall x\neq 0,\quad f(x)=\mathbb1_{\Rpe}(x)\ch\sqrt x+\mathbb1_{\R_-^*}(x)\cos\sqrt{-x}
+                \] 
+                Démontrer que $f$ est de classe $\C^\infty$ sur $\R$.
+            \end{enumerate}
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Soit $f:[0,\pi]\to\R$ une application continue par morceaux. 
+        On pose $\varphi(x)=\int_0^\pi f(t)\sin(xt)\dd t$. 
+        Démontrer que $\varphi$ est de classe $\mathcal C^1$ sur $\R$ et que 
+        \[
+            \forall x\in \R,\ \varphi'(x)=\int_0^\pi tf(t)\cos(xt)\dd t
+        \]
+    \end{exo}
+
+
+    \begin{proof}
+        Soit $x\in\R$. 
+        On écrit 
+        \[
+            \int_0^\pi f(t)\sin(xt)\dd t = \int_0^\pi\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}f(t)(tx)^{2n+1}\dd t
+        \]
+        Mais $f$ étant CPM sur le segment $[0,\pi]$, elle y est bornée, donc $\norm{f}_\infty^{[0,\pi]}<\infty$.
+        On en déduit 
+        \[
+            \forall n\in\N,\ \forall t\in[0,\pi],\quad \left|\frac{(-1)^n}{(2n+1)!}f(t)(tx)^{2n+1}\right|\leq\frac{\norm{f}_\infty^{[0,\pi]}(|x|\pi)^{2n+1}}{(2n+1)!}
+        \]
+        La série de fonctions $\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}f(t)(tx)^{2n+1}$ converge normalement, donc uniformément, 
+        on peut donc intervertir somme et intégrale pour obtenir 
+        \[
+            \int_0^\pi f(t)\sin(xt)\dd t = \sum_{n=0}^\infty \left(\int_0^\pi \frac{(-1)^n}{(2n+1)!}f(t)t^{2n+1}\dd t\right)x^{2n+1}
+        \]
+        On a alors montré que $\varphi$ est développable en série entière au voisinage de $0$.
+        Le développement est valable sur $\R$ tout entier. 
+        On en déduit que $\varphi$ est bien $\mathcal C^1$ sur $\R$, et que 
+        \[
+            \forall x\in\R,\quad \varphi'(x) = \sum_{n=0}^\infty (2n+1)\left(\int_0^\pi \frac{(-1)^n}{(2n+1)!}f(t)t^{2n+1}\dd t\right)x^{2n}
+        \]
+        On justifie, de la même manière qu'à la première interversion somme-intégrale, que pour tout $x\in\R$
+        \[
+            \sum_{n=0}^\infty (2n+1)\left(\int_0^\pi \frac{(-1)^n}{(2n+1)!}f(t)t^{2n+1}\dd t\right)x^{2n} = \int_0^\pi\sum_{n=0}^\infty tf(t)\sum_{n=0}^\infty\frac{(-1)^n}{(2n)!}(xt)^{2n}\dd t 
+        \]
+        Finalement 
+        \[
+            \forall x\in\R,\quad \varphi'(x) = \int_0^\pi tf(t)\cos(xt)\dd t
+        \]
+    \end{proof}
+
+    \subsection*{Élèves 3 \& 6}
+    \begin{ccp}
+        Développer en série entière au voisinage de $0$, en précisant le rayon de convergence, la fonction $x\mapsto \ln(1+x)+\ln(1-2x)$.
+    
+        Étudier la convergence de la série obtenue en $1/4$, $1/2$ et $-1/2$.
+        En cas de convergence, étudier la continuité en ces points.
+    \end{ccp}
+
+    \begin{exo}
+        Soit $a>0$ et $f:[-a,a]\to\R$ une fonction de classe $\C^\infty$ telle qu'il existe $C,A>0$ vérifiant, pour tout $n\in\N$,
+        \[
+            \norm{f^{(n)}}_\infty^{[-a,a]}\leq CA^nn!
+        \]
+        Démontrer que $f$ est dse${}_0$.
+    \end{exo}
+
+    \begin{proof}
+        On écrit, pour tout entier $n\in\N$ et $x\in[-a,a]$, 
+        \[
+            R_n(x)=f(x)-\sum_{k=0}^n\frac{f^{(k)}(0)}{n!}x^k
+        \]
+        La formule de taylor avec reste intégrale donne alors
+        \[
+            |R_n(x)|\leq(-1)^{\mathbb1_{x\leq 0}}\int_0^x\frac{|x-t|^n}{n!}|f^{(n+1)}(t)|\dd t\leq \frac{|x|^{n+1}}{(n+1)!}\norm{f^{(n+1)}}_\infty^{[-a,a]}
+        \]
+        En utilisant l'hypothèse sur les dérivées successives de $f$, on arrive à la majoration 
+        \[
+            |R_n(x)|\leq\frac{|x|^{n+1}}{(n+1)!}CA^{n+1}(n+1)!=C(|x|A)^{n+1}
+        \]
+        Ainsi, la suite de fonctions $(R_n)$ converge simplement vers $0$ sur $\mathopen]-1/A,1/A\mathclose[$.
+        En conclusion, $f$ est dse${}_0$.
+    \end{proof}
+\end{document}
