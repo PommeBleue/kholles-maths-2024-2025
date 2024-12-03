@@ -24,8 +24,8 @@
     \end{proof}
 
     \begin{remarks}
-        Le théorème du point fixe de Banach-Picard peut s'énoncer comme suit : si $f:E\to E$ est une application $k$-lipschitzienne avec $k\in[0,1[$ où $E$ est un espace de Banach, alors $f$ admet un unique point fixe sur $E$.
-        Si vous savez ce qu'est un espace de Banach, il reste à comprendre pourquoi j'invoque ce théorème pour expliquer que mes fonctions définies sur un compact admettent un point fixe.
+        Le théorème du point fixe de Banach-Picard peut s'énoncer comme suit : si $f:E\to E$ est une application $k$-lipschitzienne avec $k\in[0,1[$ où $E$ est un espace métrique complet, alors $f$ admet un unique point fixe sur $E$.
+        Si vous savez ce qu'est un espace métrique complet, il reste à comprendre pourquoi j'invoque ce théorème pour expliquer que mes fonctions définies sur un compact admettent un point fixe.
         Sinon, sachez que si on remplace $E$ par une partie compacte d'un espace vectoriel normé, alors le théorème reste vrai. Dans tous les cas, la démonstration vous est laissée en exercice.
     \end{remarks}
     
@@ -52,13 +52,13 @@
         On va montrer quelque chose de plus fort : pour tout point $x\in E\backslash K$, il existe une demi-droite partant de $x$ qui ne rencontre pas $K$. 
         Supposons le contraire. Cela veut dire que 
         \[
-            \forall v\in E, \exists\lambda_v\in\R_+^*,\exists y_v\in K,\ x+\lambda_vv=y_v
+            \forall v\in E-\lbrace 0\rbrace, \exists\lambda_v\in\R_+^*,\exists y_v\in K,\ x+\lambda_vv=y_v
         \]
         Pour $v\in E$, on a alors $y_v-x=\lambda_vv$, soit, en passant à la norme, $\lambda_v\norm{v}=\norm{y_v-x}$. 
         Si $v$ est pris unitaire, alors on a $v=\frac{y_v-x}{\norm{y_v-x}}$.
         L'application $\varphi:y\in K\mapsto \frac{y-x}{\norm{y-x}}$ est bien définie, continue sur $K$ et $\varphi(K)=S(0,1)$ qui est alors compact comme image par une fonction continue d'un compact, ce qui n'est pas vrai.
 
-        Finalement, si $B(0,R)$ est une boule de rayon assez grand pour contenir $K$, alors tout point $x$ de $E\backslash K$ admet un chemin continu qui part de $x$ et finissant en un point de norme plus grande que $R$, mais $E\backslash B(0,R)$ est connexe par arcs et inclus dans $E\backslash K$. 
+        Finalement, si $B(0,R)$ est une boule de rayon assez grand pour contenir $K$, alors tout point $x$ de $E\backslash K$ admet un chemin continu qui part de $x$ et finissant en un point de norme plus grande que $R$ tout en restant dans $E\backslash K$, mais $E\backslash B(0,R)$ est connexe par arcs et inclus dans $E\backslash K$. 
         En concaténant les bons chemins, on montre que $E\backslash K$ est bien connexe par arcs.
     \end{proof}
 

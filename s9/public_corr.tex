@@ -1,0 +1,181 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    \subsection*{Élève 1*}
+    \begin{exo}[ENS 2014]
+        Soit $K$ un compact de $\mathcal M_n(\C)$. 
+        On considère $\sigma(K)$ l'ensemble des valeurs propres complexes des 
+        matrices de $K$. 
+
+        Montrer que $\sigma(K)$ est un compact de $\C$. 
+        Que dire si $K$ est seulement supposé fermé ?
+    \end{exo}
+
+    \subsection*{Élève 2*}
+    \begin{exo}[Mines-Ponts 2022]
+       Soient $n\in\N^*$, $A_1,\dots,A_n\in\mathcal M_n(\C)$ des éléments nilpotents qui
+       commutent deux à deux. 
+       Calculer $A_1\times\dots\times A_n$.
+    \end{exo}
+
+    \begin{proof}
+        On procède par récurrence. 
+        Le résultat est clair si $n=1$, la seule matrice nilpotente étant le scalaire $0$. 
+        On suppose alors $n\geq 1$ et le résultat de l'énoncé vrai au rang $n-1$. 
+        On note $u_i$ les endomorphismes de $\C^n$ canoniquement associés aux $A_i$. 
+        Les endomorphismes $u_i$ sont nilpotents et commutent deux à deux. 
+        Dans une base $\mathcal B$ correspondant à une base de $\ker u_1$ complétée, la 
+        matrice de $u_1$ est de la forme
+        \[
+            \left(\begin{array}{c c} 0 & \times\\ 0 & \times\end{array}\right)
+        \]
+        et comme les $u_i$ stabilisent $\ker u_1$ puisqu'ils commutent avec $u_1$,
+        la matrice de $u_i$ pour $i\geq 2$ s'écrit 
+        \[
+            \left(\begin{array}{c c} \times & \times\\ 0 & B_i\end{array}\right)
+        \]
+        Les matrices $B_i$ sont encore nilpotentes et commutent encore deux à deux. 
+        Par hypothèse de récurrence, $B_2\dots B_n=0$ (les matrices $B_i$ sont de taille au 
+        plus $n-1$ puisque $\ker u_1$ est non nul, $u_1$ étant nilpotente). 
+        Ainsi, dans la base $\mathcal B$, la matrice de $u_2\circ\dots\circ u_n$ est de la forme 
+        \[
+            \left(\begin{array}{c c} \times & \times\\ 0 & 0\end{array}\right)
+        \]
+        Finalement, le produit $u_1\circ u_2\circ \dots\circ u_n$ a pour matrice dans la base $\mathcal B$ 
+        \[
+            \left(\begin{array}{c c} 0 & \times\\ 0 & \times\end{array}\right)\left(\begin{array}{c c} \times & \times\\ 0 & 0\end{array}\right)=0
+        \]
+    \end{proof}
+
+    \subsection*{Élève 3*}
+    \begin{exo}[Mines Ponts 2022]
+        Soient $A,B,C$ des matrices de $\mathcal M_n(\C)$ telles que $AC=CB$. 
+        Notons $r$ le rang de la matrice $C$. 
+        Montrer que $\deg(\chi_A\wedge\chi_B)\geq r$.
+    \end{exo}
+    
+    \begin{proof}
+        D'abord, on montre très facilement que pour tout polynôme $P\in\C[X]$, $P(A)C=CP(B)$. 
+        Si on note 
+        \[
+            \chi_B=\prod_{i=1}^m(X-\lambda_i)^{r_i}
+        \]
+        alors, par le lemme des noyeaux et le théorème de Cayley-Hamilton
+        \[
+            \C^n=\ker\chi_B(B)=\bigoplus_{i=1}^m(B-\lambda_iI_n)^{r_i}\tag*{(1)}
+        \]
+        Soit $\mathcal B=\mathcal B_1\cup\dots\cup\mathcal B_m$ une base adaptée à la somme (1)
+        et $P$ la matrice inversible dont les colonnes sont les éléments de $\mathcal B$. 
+        Par inversibilité de $P$, $\rg CP=\rg C$, il existe alors $\mathcal C\subset\mathcal B$ de cardinal $r$ tel que 
+        l'image par $C$ de $\mathcal C$ soit une famille libre. 
+        On peut voir que si $x\in\mathcal C$, il existe $i=1,\dots,m$ tel que $x\in \ker(B-\lambda_iI_n)^{r_i}$, de sorte que,
+        comme $(A-\lambda_iI_n)^{r_i}C=C(B-\lambda_iI_n)^{r_i}$, $Cx\in\ker(A-\lambda_iI_n)^{r_i}$. 
+        On a 
+        \[
+            \lbrace 0\rbrace\subsetneq \ker(A-\lambda_iI_n)\subsetneq\dots\subsetneq \ker(A-\lambda_iI_n)^k = \ker(A-\lambda_iI_n)^{k+1} =\dots
+        \]
+        où $k$ est le plus petit indice $s$ tel que $\ker(A-\lambda_i I_n)^s=\ker(A-\lambda_i I_n)^{s+1}$.
+        Comme $Cx$ fait partie d'une famille libre, il est non nul, donc l'indice $k$ n'est pas nul (car sinon $\ker(A-\lambda_iI_n)^{r_i}=\lbrace 0\rbrace$)
+        et alors $\ker(A-\lambda_i I_n)\neq\lbrace 0\rbrace$ et $\lambda_i$ est valeur propre de $A$. 
+        On peut introduire $r'_i$ la multiplicité de $\lambda_i$ en tant que racine de $\chi_A$.
+        On a 
+        $r_i'=\dim\ker(A-\lambda_i I_n)^{r_i'}=\dim\ker(A-\lambda_i I_n)^k\geq\dim\ker(A-\lambda_i I_n)^{r_i}\geq\Card \mathcal B_i\cap\mathcal C$.
+        En particulier, $(X-\lambda_i)^{\Card\mathcal B_i\cap\mathcal C}$ divise $\chi_A$ et $\chi_B$.
+
+        Comme ceci vaut pour tout $i$ tel que $\Card\mathcal B_i\cap\mathcal C\neq 0$, on a 
+        \[
+            \prod_{i=1}^m(X-\lambda_i)^{\Card\mathcal B_i\cap\mathcal C}=\prod_{\begin{smallmatrix} i=1\\ \Card\mathcal B_i\cap\mathcal C\neq 0 \end{smallmatrix}}^m (X-\lambda_i)^{\Card\mathcal B_i\cap\mathcal C}\quad\text{divise}\quad \chi_A\wedge\chi_B
+        \]
+        Finalement
+        \[
+            \boxed{\deg \chi_A\wedge\chi_B\geq\sum_{i=1}^m\Card\mathcal B_i\cap\mathcal C=\Card\mathcal C = r}
+        \]
+    \end{proof}
+
+
+    \subsection*{Élève 4}
+    \begin{ccp}
+        Soit $E$ un espace vectoriel sur $\R$ ou $\C$. 
+        Soit $f\in\mathcal L(E)$ tel que $f^2-f-2\id_E=0$.
+        \begin{enumerate}
+            \item Prouver que $f$ est un automorphisme et exprimer $f^{-1}$ en fonction de $f$.
+            \item Prouver que $E = \ker(f+\id_E)\oplus\ker(f-2\id_E)$ de deux manières différentes.
+            \item Dans cette question, on suppose que $E$ est de dimension finie. 
+            Prouver que $\im(f+\id_E)=\ker(f-2\id_E)$.
+        \end{enumerate}
+    \end{ccp}
+    
+    \begin{exo}[Mines-Ponts 2022, adapté]
+        Soit $A\in\mathcal M_n(\C)$ une matrice nilpotente.
+        \begin{enumerate}
+            \item Montrer que $A^n=0$ en utilisant le théorème de Cayley-Hamilton.
+            \item Calculer $\det(A+I_n)$.
+            \item Soit $M\in\mathcal M_n(\C)$ telle que $AM=MA$.
+            Démontrer qu'il existe une suite $(M_p)$ de matrices inversibles, commutant avec $A$,
+            et qui converge vers $M$. En déduire que $\det(A+M)=\det M$.
+        \end{enumerate}
+    \end{exo}
+
+    \subsection*{Élève 5}
+    \begin{ccp}
+        Soient $u$ et $v$ deux endomorphismes d'un $\R$-ev $E$. 
+        \begin{enumerate}
+            \item Soit $\lambda$ un réel non nul. 
+            Montrer que $\lambda$ est vp de $uv$ ssi $\lambda$ est vp de $vu$.
+            \item Dans cette question, $E=\R[X]$, $u(P)$ désignera la primitive de $P$ nulle en $1$, 
+            $v(P)$ le polynôme dérivé de $P$. Déterminer $\ker(uv)$ et $\ker(vu)$. Discuter le résultat
+            de la première question pour $\lambda=0$.
+            \item Si $E$ est de dimension finie, démontrer que le résultat de la première question reste vrai 
+            pour $\lambda = 0$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Soit $E=\mathcal C^0([0,1],\R)$.
+        Pour $f\in E$, on note $T(f)$ l'application définie sur $[0,1]$ par 
+        \[
+            T(f)(x)=\int_0^1\min(x,t)f(t)\dd t 
+        \]
+        \begin{enumerate}
+            \item Monter que $T\in\mathcal L(E)$.
+            \item Déterminer les valeurs propres et les vecteurs propres de $T$.
+        \end{enumerate}
+    \end{exo}
+
+    \subsection*{Élève 6}
+    \begin{ccp}
+        Soit $E$ un espace vectoriel réel de dimension finie $n\geq 1$ 
+        et $u$ un endomorphisme de $E$ annulé par $X^3+X^2+X$. 
+        \begin{enumerate}
+            \item Montrer que $\im u\oplus\ker u = E$.
+            \item Rappeler le lemme des noyeaux pour deux polynômes et en déduire que 
+            $\im u = \ker(u^2+u+\id_E)$.
+            \item On suppose que $u$ est non bijectif. 
+            Déterminer les valeurs propres de $u$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}[Mines Ponts 2022, adapté]
+        Soient $A,B,C$ des matrices de $\mathcal M_n(\C)$ telles que $AC=CB$. 
+        Notons $r$ le rang de la matrice $C$. 
+        \begin{enumerate}
+            \item Montrer que pour tout polynôme $P\in\C[X]$, $P(A)C=CP(B)$.
+            \item On note 
+            \[
+                \chi_B=\prod_{i=1}^m(X-\lambda_i)^{r_i}
+            \]
+            On note également, pour $i=1,\dots,m$, $N_i=\ker(B-\lambda_i I_n)^{r_i}$. 
+
+            Justifier que 
+            \[
+                \C^n=\bigoplus_{i=1}^mN_i\tag*{(1)}
+            \]
+            \item Montrer que pour tout $i$ et pour tout $x\in N_i$, $Cx\in\ker(A-\lambda_i I_n)^{r_i}$.
+            \item En prenant une base adaptée à la somme (1), en déduire que le pgcd de $\chi_A$ et $\chi_B$ est de degré plus grand que $r$.
+        \end{enumerate}
+    \end{exo}
+\end{document}
