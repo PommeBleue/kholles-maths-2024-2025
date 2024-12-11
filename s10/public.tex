@@ -1,0 +1,62 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    \subsection*{Élèves 1 \& 4}
+    \begin{ccp}[Numéro 69]
+        On considère la matrice 
+        \[
+            A = \begin{pNiceMatrix}[baseline=2]
+                0 & a & 1\\
+                a & 0 & 1\\
+                a & 1 & 0
+            \end{pNiceMatrix},\quad a\in\R
+        \]
+        \begin{enumerate}
+            \item Déterminer le rang de $A$. 
+            \item Pour quelles valeurs de $A$ la matrice $A$ est-elle diagonalisable ?
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Soit $E$ un $\R$-ev de dimension $3$, $f\in\mathcal L(E)$. 
+        On suppose que $f$ est annulé par $X^4-X^2$ et que $-1$ et $1$ sont valeurs propres de $f$. 
+        Montrer que $f$ est diagonalisable.
+    \end{exo}
+
+    \subsection*{Élèves 2 \& 5}
+    \begin{ccp}[Numéro 67]
+        Diagonalisablité dans $\mathcal M_3(\R)$ puis dans $\mathcal M_3(\C)$ de 
+        \[
+            \begin{pNiceMatrix}
+                0 & a & c\\
+                b & 0 & c\\
+                b & -a & 0
+            \end{pNiceMatrix},\quad a,b,c\in\R
+        \]
+    \end{ccp}
+
+    \begin{exo}
+        Soit $M\in\mathcal M_n(\R)$ telle que $M^2+M^T=2I_n$. 
+        Démontrer que $M$ est diagonalisable dans $\mathcal M_n(\R)$.
+    \end{exo}
+
+    \subsection*{Élèves 3 \& 6}
+    \begin{ccp}[Numéro 72]
+        Soit $f$ un endomorphisme d'un espace vectoriel de dimension $n\geq 1$, et soit $(e_i)$ une base de $E$. 
+        On suppose $f(e_i)=v$ pour tout $i$, où $v\in E$. 
+        Donner le rang de $f$ et discuter de la diagonalisablité de $f$.
+    \end{ccp}
+
+    \begin{exo}
+        Soient $k\in\N^*$, $A\in\mathcal M_n(\K)$ tels que $A^{k+1}=A^k$.
+        \begin{enumerate}
+            \item Démontrer que pour tout entier $q\geq 1$, $A^{k+q}=A^k$.
+            \item Établir que $A^k$ est diagonalisable.
+            \item Démontrer que pour tout $p\in\lbrace 1,\dots,k-1\rbrace$,  $A^k-A^p$ est nilpotente.
+        \end{enumerate}
+    \end{exo}
+\end{document}
