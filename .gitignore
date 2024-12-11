@@ -1,5 +1,6 @@
 .vscode
 **.DS_Store
+scripts/base_dir
 s*/main.*
 s1/*
 texput.log
