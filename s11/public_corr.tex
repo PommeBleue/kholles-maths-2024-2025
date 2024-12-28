@@ -1,0 +1,139 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    \subsection*{Élève 1*}
+    \begin{exo}
+        Soit $G$ un sous-groupe de $\gl_n(\C)$ borné. 
+        Montrer que les valeurs propres des matrices de $G$ 
+        sont toutes de module $1$. 
+        Si de plus $G$ est supposé inclus dans $B(I_n,\sqrt2)$
+        pour une certaine norme d'opérateur, montrer que $G$
+        est trivial.
+    \end{exo}
+
+    \begin{proof}
+        Montrons que les valeurs propres des matrices de $G$ sont toutes de module $1$. 
+        En effet, si $A$ est une matrice de $G$, alors la suite $(A^p)_p$ est bornée. 
+        Trigonaliser $A$ et choisir pour norme la norme infinie permet de montrer que si 
+        $\lambda$ est valeur propre, alors la suite $(\lambda^p)_p$ est encore bornée,
+        ce qui montre que toutes les valeurs propres sont de module plus petit que $1$.
+        Ensuite, considérer $A^{-1}\in G$ permet de montrer que si $\lambda$ est valeur 
+        propre de $A$, alors $\lambda^{-1}$ est valeur propre de $A^{-1}$, ce qui montre
+        que $|\lambda^{-1}|\leq 1$, donc toutes les valeurs propres de $A$ sont de module 
+        plus grand que $1$ (notons que comme $A$ est inversible, vu $G\subset \gl_n(\C)$, 
+        toutes ses valeurs propres sont non nulles, donc il est licite de considérer 
+        leurs inverses).
+
+        À présent, on suppose de plus que $G\subset B(I_n,\sqrt2)$, pour une certaine 
+        norme d'opérateur $\norm{\cdot}$ (norme subordonnée à une norme qu'on notera 
+        également $\norm{\cdot}$). 
+        Soit $A\in G$. 
+        Soit $\lambda$ une valeur propre et $x\neq 0$ un vecteur propre associé. 
+        Alors 
+        \[
+            |1-\lambda|\norm x=\norm{(A-I_n)x}\leq \norm{A-I_n}\norm x<\sqrt2\norm x
+        \]
+        Soit, comme $x\neq 0$ et par séparation de la norme 
+        \[
+            |1-\lambda|<\sqrt2\tag*{(1)}
+        \]
+        La première partie de l'exercice donne $\lambda=e^{i\theta}$ avec 
+        un certain $\theta\in\mathopen[0,2\pi\mathclose[$.
+        La relation (1) montre 
+        \[
+            |\sin(\theta/2)|<\frac{\sqrt2}2
+        \]
+        On pose $\tau=\theta/2$ et on remarque que, comme ce qui vient d'être fait 
+        vaut pour toute valeur propre de toute matrice de $G$ et que pour tout entier 
+        $\geq 0$, $\lambda^p$ est valeur propre de $A^p$, alors on obtient également que 
+        \[
+            |\sin(p\tau)|<\frac{\sqrt2}2\tag*{(2)}
+        \]
+        Si $\theta$ est incomensurable à $\pi$, alors $\tau$ l'est aussi et  
+        on peut extraire de $(\sin(p\tau))$ une suite qui tend vers $1$, ce qui n'est 
+        pas possible vu (2).
+        Assurément, $\theta$ s'écrit comme un rationnel que multiplie $\pi$. 
+        En fait, un peut de trigonométrie nous permet de montrer que ce rationnel est 
+        forcément nul (on laisse ça en exercice au lecteur, ce n'est franchement pas 
+        très difficile). 
+        On montre ainsi que $1$ est la seule valeur propre possible pour toutes les matrices
+        de $G$.
+
+        Maintenant, place à l'étape finale.
+        Soit $A\in G$, on sait que $\chi_A=(X-1)^n$ d'après ce qui précède, donc par 
+        Cayley Hamilton, $N:=A-I_n$ est nilpotente, on a donc la décomposition de Dunford 
+        de $A$ : $A=I_n+N$ (si vous ne savez pas ce que c'est Dunford, on en a pas vraiment 
+        besoin, ici tout ce qui nous intéresse c'est que $N$ est nilpotente et que $I_n$ et 
+        $N$ commutent... bon, ce n'est rien de révolutionnaire).
+        Pour conclure, on a juste besoin de montrer que $N=0$, autrement dit que son indice
+        de nilpotence est nul. 
+        Si ce n'est pas le cas, alors il sera possible de trigonaliser $N$ par blocs en 
+        mettant en haut à gauche la matrice compagnon de $X^m-1$, que l'on notera $C$, où
+        $m$ désignera l'indice de nilpotence non nul de $N$ (donc $C$ est une
+        matrice de taille non nulle...). 
+        Alors, il suffit d'écrire
+        \[
+            \forall p\in\N,\ (I_m+C)^p=\sum_{k=0}^n\binom pk C^k
+        \]
+        pour se rendre compte que la suite de matrices $((I_m+C)^p)$ n'est pas bornée, ce
+        qui montre également, en utilisant l'équivalence des normes et la continuité de 
+        la multiplication par une matrice, que $(A^p)$ n'est pas bornée, ce qui contredit 
+        évidemment nos hypothèses de départ. 
+        C'est donc gagné, $N=0$ et $A=I_n$. 
+        Le groupe $G$ est trivial.
+    \end{proof}
+
+    \subsection*{Élève 2}
+    \begin{ccp}
+        On pose $A=\left(\begin{array}{c c} 2 & 1\\ 4 & -1\end{array}\right)$.
+        \begin{enumerate}
+            \item Déterminer les valeurs propres et vecteurs propres associés de $A$.
+            \item Déterminer toutes les matrices qui commutent avec $A$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        L'équation 
+        \[
+            X^2=\left(\begin{array}{c c c} 0 & 1 & 0\\ 0 & 0 & 1\\ 0 & 0 & 0\end{array}\right)
+        \]
+        possède-t-elle des solutions dans $\mathcal M_3(\C)$ ? 
+    \end{exo}
+
+    \begin{proof}
+        On montre que toutes les valeurs propres complexes d'une matrice solution
+        sont nulles, donc si $X$ est une matrice solution, elle est nilpotente, donc 
+        $X^4=0$, ce qui n'est pas. 
+        Il n'y a donc pas de solutions.
+    \end{proof}
+
+    \subsection*{Élève 3}
+    \begin{ccp}
+        On considère 
+        \[
+            A=\left(\begin{array}{c c c}
+                0 & 2 & -1\\
+                -1 & 3 & -1\\
+                -1 & 2 & 0
+            \end{array}\right)
+        \]
+        \begin{enumerate}
+            \item Déterminer les valeurs propres de $A$. 
+            \item $A$ est-elle inversible ? diagonalisable ?
+            \item Déterminer $\mu_A$.
+            \item Calculer les puissances de $A$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        Quelle est la trace d'une matrice nilpotente ? 
+        Donner un contre-exemple à la réciproque. 
+        Si $A$ est une matrice de $\mathcal M_2(\C)$ 
+        telle que $\tr(A)=\tr(A^2)=0$, montrer que $A$ 
+        est nilpotente.
+    \end{exo}
+\end{document}
