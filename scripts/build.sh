@@ -14,3 +14,5 @@ if [ -n "$2" ]; then
 fi
 
 git add .
+git commit -m "Adding $tex_file and $pdf_file"
+git push origin main
