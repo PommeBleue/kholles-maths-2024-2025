@@ -13,6 +13,11 @@ if [ -n "$2" ]; then
     cp "$output_dir/$pdf_file" "$target_dir/$pdf_file"
 fi
 
-git add .
-git commit -m "Adding $tex_file and $pdf_file"
-git push origin main
+# Check if there are changes to commit
+if ! git diff-index --quiet HEAD --; then
+    git add .
+    git commit -m "Adding $tex_file and $pdf_file"
+    git push origin main
+else
+    echo "No changes to commit"
+fi
