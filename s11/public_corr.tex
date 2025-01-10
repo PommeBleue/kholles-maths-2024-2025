@@ -134,4 +134,66 @@
         telle que $\tr(A)=\tr(A^2)=0$, montrer que $A$ 
         est nilpotente.
     \end{exo}
+
+    \color{commented}\itshape 
+    Les exercices suivants on été posés aux élèves du groupe 6 lors d'un rattrapage 
+    la semaine du 6 janvier.
+    \fontreset
+
+    \subsection*{Élève 1*}
+    \begin{exo}[Oral Mines Ponts]
+        Soit $A\in\mathcal M_n(\C)$.
+       \begin{enumerate}
+        \item Si $A$ est inversible, montrer que $A$ 
+        est diagonalisable si et seulement si $A^2$ l'est.
+        \item Montrer que $A$ est diagonalisable si 
+        et seulement si $A^2$ l'est et que $\ker A = \ker A^2$.
+        Que dire si $A\in\mathcal M_n(\R)$ ?
+       \end{enumerate}
+    \end{exo}
+
+    \subsection*{Élève 2}
+    \begin{ccp}
+        On considère 
+        \[
+            A=\left(\begin{array}{c c c}
+                0 & 2 & -1\\
+                -1 & 3 & -1\\
+                -1 & 2 & 0
+            \end{array}\right)
+        \]
+        \begin{enumerate}
+            \item Déterminer les valeurs propres de $A$. 
+            \item $A$ est-elle inversible ? diagonalisable ?
+            \item Déterminer $\mu_A$.
+            \item Calculer les puissances de $A$.
+        \end{enumerate}
+    \end{ccp}
+
+    \begin{exo}
+        L'équation 
+        \[
+            X^2=\left(\begin{array}{c c c} 0 & 1 & 0\\ 0 & 0 & 1\\ 0 & 0 & 0\end{array}\right)
+        \]
+        possède-t-elle des solutions dans $\mathcal M_3(\C)$ ? 
+    \end{exo}
+
+    \subsection*{Élève 3*}
+    \begin{exo}
+        Pour $\sigma\in\mathfrak S_n$, on note $f_\sigma$ l'endomorphisme de $\R^n$ 
+        défini par $f_\sigma(e_i)=e_{\sigma(i)}$ pour $i=1,\dots,n$ où $(e_1,\dots,e_n)$
+        désigne la base canonique de $\R^n$.
+        On notera $P_\sigma$ la matrice de $f_\sigma$ dans la base canonique.
+        On note $e=\sum_{i=1}^ne_i$ et $H$ l'hyperplan d'équation $x_1+\dots+x_n=0$ 
+        dans la base canonique. 
+        \begin{enumerate}
+            \item Déterminer le polynôme minimal et le polynôme caractéristique de 
+            $P_\sigma$.
+            \item On pose $f=\frac1{n!}\sum_{\sigma\in\mathfrak S_n}f_\sigma$. 
+            
+            Démontrer que $f$ est le projecteur sur $\R e$ parallèlement à $H$. 
+            \item Déterminer les sous-espaces vectoriels stables par tous les 
+            $f_\sigma$.
+        \end{enumerate}
+    \end{exo}
 \end{document}
