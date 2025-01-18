@@ -1,0 +1,23 @@
+\documentclass[10pt]{scrartcl}
+\usepackage[pretty]{mystd}
+\title{}
+\author{}
+\date{}
+
+\begin{document}
+    \begin{exo}
+        Déterminer les $\alpha\in\R$ tels que $\int_{\R_+}\sin(t)/t^\alpha\dd t$ converge.
+    \end{exo}
+
+    \begin{proof}
+        Comme $f_\alpha : t\mapsto \sin(t)/t^\alpha$ est continue sur 
+        $\mathopen]0,+\infty\mathclose[$, les problèmes de convergence sont a priori
+        en $0$ et en $+\infty$.
+
+        En comparant avec une intégrale de Riemann, on montre que l'intégrale 
+        $\smallint_1^{+\infty}f_\alpha$ converge absolument pour $\alpha > 1$, puis 
+        en faisant une IPP, on montre la convergence pour $\alpha\in\mathopen]0,1\mathclose[$.
+        Cependant, l'intégrale $\int_1^{+\infty}f_\alpha$ diverge lorsque $\alpha\leq0$.
+        En effet, on peut poser $u_n=\int_{n\pi}^{(n+1)\pi}\sin(t)/t^\alpha\dd t$.
+    \end{proof}
+\end{document}
